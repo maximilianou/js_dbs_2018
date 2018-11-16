@@ -7,23 +7,21 @@ class CategoryDB{
     console.log('CategoryDB.constructor()....................');
     this.category_db = new Alasql.Database();  
     this.category_db.exec(' CREATE TABLE IF NOT EXISTS category ( cat_id INT PRIMARY KEY, cat_name STRING UNIQUE  ) '); 
-//    this.insert = this.category_db.compile('INSERT INTO category ( cat_id, cat_name )VALUES( :cat_id, :cat_name) ');
-//    this.delete = this.category_db.compile(' DELETE FROM category WHERE cat_id = :cat_id ');
-//    this.select = this.category_db.compile(' SELECT * FROM category ');
-//    this.count = this.category_db.compile(' SELECT COUNT(*) FROM category ');
   }
 
   add( one ){
-     this.insert(one); 
+    this.category_db.exec('INSERT INTO category ( cat_id, cat_name )VALUES( :cat_id, :cat_name) ', one);
+  }
+  update( one ){
+    this.category_db.exec('UPDATE category SET cat_name = :cat_name WHERE cat_id =  :cat_id ', one );
   }
   remove( one ){
-     this.delete(one);
+    this.category_db.exec(' DELETE FROM category WHERE cat_id = :cat_id ', one);
   }
-  retrieveAll(){
-     this.select();  
+  async retrieveAll(){
+    return await this.category_db.exec(' SELECT * FROM category ');
   }
   async count(){
-    // this.count();
     return await this.category_db.exec(' SELECT COUNT(*) size FROM category ');
   }
 }

@@ -29,21 +29,19 @@ describe("Database EMBED : CRUD", () => {
     it("should return the element ", async ()=>{
       const how_many = await db.count();
       const all_of_them = await db.retrieveAll( category );
-      all_of_them.length.should.not.eql.how_many;
+      all_of_them.length.should.eql.how_many;
     });
   });
 
-/*
   describe("SQL Update: ", ()=>{
     it("should update the element ", ()=>{
       const how_many = db.count();
-      user[1] = 'robin@yahoo.com';
-      db.update( user );
+      category.cat_name = 'robin@yahoo.com';
+      db.update( category );
       db.count().should.eql.how_many;
     });
   });
-*/
-/*
+  
   describe("SQL Delete: ", ()=>{
     it("should remove the element ", ()=>{
       const how_many = db.count();
@@ -52,5 +50,4 @@ describe("Database EMBED : CRUD", () => {
     });
   });
 
-*/
 });
