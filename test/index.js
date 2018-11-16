@@ -1,10 +1,9 @@
-const CategoryDB = require('../server/embed.js');
-const db = new CategoryDB();
+const db = require('../server').DB;
 const should = require('should');
 
-describe("Database EMBED : CRUD", () => {
+describe("Database access : CRUD", () => {
 
-  const category = { 'cat_id' : 1, 'cat_name' : 'forest'}; 
+  const user = ['Batman','bat@gmail.com']; 
 
   describe("Number! to Number!", ()=> {
     it("should check number by number", ()=>{
@@ -19,18 +18,17 @@ describe("Database EMBED : CRUD", () => {
   describe("SQL Create: ", ()=>{
     it("should insert a new element ", ()=>{
       const how_many = db.count();
-      db.add( category );
+      db.insert( user );
       db.count().should.not.eql.how_many;
     });
   });
   describe("SQL Retrieve: ", ()=>{
     it("should return the element ", async ()=>{
-      const how_many = await db.count();
-      const all_of_them = await db.retrieveAll( category );
+      const how_many =  await db.count();
+      const all_of_them =  await db.viewAll( user );
       all_of_them.length.should.not.eql.how_many;
     });
   });
-/*
   describe("SQL Update: ", ()=>{
     it("should update the element ", ()=>{
       const how_many = db.count();
@@ -39,11 +37,10 @@ describe("Database EMBED : CRUD", () => {
       db.count().should.eql.how_many;
     });
   });
-*/
   describe("SQL Delete: ", ()=>{
     it("should remove the element ", ()=>{
       const how_many = db.count();
-      db.remove( category );
+      db.remove( [ user[0] ] );
       db.count().should.not.eql.how_many;
     });
   });
