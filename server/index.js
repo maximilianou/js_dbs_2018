@@ -35,4 +35,4 @@ class DB {
   }
 }
 
-module.exports = DB;
+module.exports = { DB: DB};

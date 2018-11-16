@@ -1,9 +1,11 @@
-const db = require('../server');
+const Db = require('../../server/embed/');
+//import Db from '../../server/embed/index.js' ;
+const db = new Db.CategoryDB();
 const should = require('should');
 
-describe("Database access : CRUD", () => {
+describe("Database EMBED : CRUD", () => {
 
-  const user = ['Batman','bat@gmail.com']; 
+  const category = { 'cat_id' : 1, 'cat_name' : 'forest'}; 
 
   describe("Number! to Number!", ()=> {
     it("should check number by number", ()=>{
@@ -18,17 +20,20 @@ describe("Database access : CRUD", () => {
   describe("SQL Create: ", ()=>{
     it("should insert a new element ", ()=>{
       const how_many = db.count();
-      db.insert( user );
+      db.add( category );
       db.count().should.not.eql.how_many;
     });
   });
+
   describe("SQL Retrieve: ", ()=>{
     it("should return the element ", async ()=>{
       const how_many = await db.count();
-      const all_of_them = await db.viewAll( user );
+      const all_of_them = await db.retrieveAll( category );
       all_of_them.length.should.not.eql.how_many;
     });
   });
+
+/*
   describe("SQL Update: ", ()=>{
     it("should update the element ", ()=>{
       const how_many = db.count();
@@ -37,15 +42,15 @@ describe("Database access : CRUD", () => {
       db.count().should.eql.how_many;
     });
   });
+*/
+/*
   describe("SQL Delete: ", ()=>{
     it("should remove the element ", ()=>{
       const how_many = db.count();
-      db.remove( [ user[0] ] );
+      db.remove( category );
       db.count().should.not.eql.how_many;
     });
   });
 
-  after("Database Pooling Connections Closing..", ()=>{
-    db.end();
-  });
+*/
 });
