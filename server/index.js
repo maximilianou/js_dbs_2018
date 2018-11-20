@@ -12,7 +12,7 @@ class DB {
   }
   static async count(){
     const many_ones = await pool.query(' SELECT COUNT(*) FROM users ')
-    return many_ones;
+    return many_ones.rows[0].count;
   }
   static async viewAll(){
     const { rows } = await pool.query('SELECT * FROM users ');
