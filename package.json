@@ -9,7 +9,10 @@
   },
   "scripts": {
     "test": "mocha test/*.js",
-    "testem": "mocha test/embed/*.js"
+    "test_em": "mocha test/embed/*.js",
+    "test_min": "mocha --reporter min test/*.js",
+    "test_json": "mocha --reporter json test/*.js",
+    "test_doc": "mocha --reporter doc test/*.js"
   },
   "author": "maximilianou@gmail.com",
   "license": "MIT",

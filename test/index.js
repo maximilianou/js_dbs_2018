@@ -52,6 +52,11 @@ describe("Database access : CRUD", () => {
       db.count().should.not.eql.how_many;
     });
   });
+  describe("Test SQL DB: ", ()=>{
+    it("should not throw an Error ", ()=>{
+      db.testDB( );
+    });
+  });
 
   after("Database Pooling Connections Closing..", ()=>{
     db.end();

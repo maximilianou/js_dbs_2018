@@ -33,6 +33,18 @@ class DB {
   static async end(){
     pool.end();
   }
+  static testDB(){
+    //const oneUser = { 'u_name': 'test01', 'u_email': 'test01@u.com' };
+    const oneUser = [ 'test01', 'test01@u.com' ];
+    (async () => {
+    
+       console.log( "DB::test::insert::::" + JSON.stringify( DB.insert(oneUser) ) );
+       oneUser.u_email = 'test_01@u.com'; 
+       console.log( "DB::test::update::::" + JSON.stringify( DB.update(oneUser) ) ); 
+       console.log( "DB::test::remove::::" + JSON.stringify( DB.remove( [ oneUser[0] ] ) ) );
+    })(); 
+  }
+
 }
 
 module.exports = { DB: DB};
