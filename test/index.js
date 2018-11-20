@@ -29,8 +29,15 @@ console.log("retrieve: many: "+how_many);
 console.log("retrieve: many: "+JSON.stringify(how_many));
       const all_of_them =  await db.viewAll( user );
       all_of_them.length.should.not.eql.how_many;
+      console.log("- - no ? - "+JSON.stringify(all_of_them.length.should.not.eql.how_many));
+      console.log("- - yes? -"+JSON.stringify(all_of_them.length.should.eql.how_many));
+      console.log("- - - - - "+JSON.stringify(all_of_them));
+      console.log("- - - - - length --  "+JSON.stringify(all_of_them.length));
+      console.log("- - - - - size   --  "+JSON.stringify(all_of_them.size));
+      console.log("- - - - - - - - - -  "+JSON.stringify(how_many));
+      console.log("- - - - - - - - - -  "+JSON.stringify(how_many.rows[0].count));
       all_of_them.length.should.eql.how_many;
-console.log("retrieve: all: "+JSON.stringify(all_of_them));
+      console.log("retrieve: all: "+JSON.stringify(all_of_them));
     });
   });
   describe("SQL Update: ", ()=>{
