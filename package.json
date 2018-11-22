@@ -8,7 +8,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/*.js",
+    "test": "mocha test/index.js",
+    "test_chai": "mocha test/index_chai.js",
     "test_em": "mocha test/embed/*.js",
     "test_min": "mocha --reporter min test/*.js",
     "test_json": "mocha --reporter json test/*.js",
@@ -18,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "alasql": "^0.4.11",
+    "chai": "^4.2.0",
     "mocha": "^5.2.0",
     "pg": "^7.6.0",
     "should": "^13.2.3"
