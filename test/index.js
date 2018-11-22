@@ -1,4 +1,5 @@
 const db = require('../server').DB;
+//const should = require('should');
 const should = require('should');
 
 describe("Database access : CRUD", () => {
@@ -25,8 +26,6 @@ describe("Database access : CRUD", () => {
   describe("SQL Retrieve: ", ()=>{
     it("should return the element ", async ()=>{
       const how_many =  await db.count();
-//console.log("retrieve: many: "+how_many);
-//console.log("retrieve: many: "+JSON.stringify(how_many));
       const all_of_them =  await db.viewAll( user );
       all_of_them.length.should.not.eql.how_many;
       console.log(all_of_them.length.should.not.eql.how_many);
